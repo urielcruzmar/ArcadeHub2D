@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,7 +17,6 @@ namespace FlappyBird
         void Start()
         {
             GameObject newPipe = Instantiate(pipe) ?? throw new ArgumentNullException("Instantiate(pipe)");
-            newPipe.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), 0);
         }
 
         // Update is called once per frame
