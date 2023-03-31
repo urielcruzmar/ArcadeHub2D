@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManagerPong : MonoBehaviour
 {
     [SerializeField] private TMP_Text paddleScoreText1;
     [SerializeField] private TMP_Text paddleScoreText2;
@@ -18,18 +18,18 @@ public class GameManager : MonoBehaviour
     private int paddleScore1;
     private int paddleScore2;
 
-    private static GameManager instance;
+    private static GameManagerPong _instance;
     
-    public static GameManager Instance
+    public static GameManagerPong Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = FindObjectOfType<GameManager>();
+                _instance = FindObjectOfType<GameManagerPong>();
             }
 
-            return instance;
+            return _instance;
         }
     }
 

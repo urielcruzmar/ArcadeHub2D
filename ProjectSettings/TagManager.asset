@@ -8,6 +8,8 @@ TagManager:
   - Goal1
   - Goal2
   - Wall
+  - Pipe
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -42,6 +44,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1321795561
+    locked: 0
+  - name: Ground
+    uniqueID: 1179473825
+    locked: 0
+  - name: Foreground
+    uniqueID: 3859136153
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

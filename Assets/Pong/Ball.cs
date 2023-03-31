@@ -50,16 +50,16 @@ public class Ball : MonoBehaviour
         {
             ballRb.velocity = new Vector2(0, 0);
             source.PlayOneShot(scoreSound);
-            GameManager.Instance.Paddle2Scored();
-            GameManager.Instance.Restart();
+            GameManagerPong.Instance.Paddle2Scored();
+            GameManagerPong.Instance.Restart();
         }
 
         if (col.gameObject.CompareTag("Goal2"))
         {
             ballRb.velocity = new Vector2(0, 0);
             source.PlayOneShot(scoreSound);
-            GameManager.Instance.Paddle1Scored();
-            GameManager.Instance.Restart();
+            GameManagerPong.Instance.Paddle1Scored();
+            GameManagerPong.Instance.Restart();
         }
     }
 }
