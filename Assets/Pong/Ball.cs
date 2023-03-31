@@ -8,11 +8,15 @@ using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
+    private Rigidbody2D ballRb;
     [SerializeField] private float initialVelocity = 4f;
     [SerializeField] private float velocityMultiplier = 1.1f;
-    
-    private Rigidbody2D ballRb;
-    
+
+    [SerializeField] public AudioSource source;
+    [SerializeField] public AudioClip paddleHitSound;
+    [SerializeField] public AudioClip wallHitSound;
+    [SerializeField] public AudioClip scoreSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,12 @@ public class Ball : MonoBehaviour
         if (col.gameObject.CompareTag("Paddle"))
         {
             ballRb.velocity *= velocityMultiplier;
+            source.PlayOneShot(paddleHitSound);
+        }
+
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            source.PlayOneShot(wallHitSound);
         }
     }
 
@@ -39,6 +49,7 @@ public class Ball : MonoBehaviour
         if (col.gameObject.CompareTag("Goal1"))
         {
             ballRb.velocity = new Vector2(0, 0);
+            source.PlayOneShot(scoreSound);
             GameManager.Instance.Paddle2Scored();
             GameManager.Instance.Restart();
         }
@@ -46,6 +57,7 @@ public class Ball : MonoBehaviour
         if (col.gameObject.CompareTag("Goal2"))
         {
             ballRb.velocity = new Vector2(0, 0);
+            source.PlayOneShot(scoreSound);
             GameManager.Instance.Paddle1Scored();
             GameManager.Instance.Restart();
         }
