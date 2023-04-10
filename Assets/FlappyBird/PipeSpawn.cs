@@ -13,6 +13,16 @@ namespace FlappyBird
         public GameObject pipe;
         public float height;
 
+        public List<GameObject> pipes = new List<GameObject>();
+
+        public void Restart()
+        {
+            foreach (GameObject currentPipe in pipes)
+            {
+                Destroy(currentPipe);
+            }
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -25,6 +35,7 @@ namespace FlappyBird
             if (_timer > maxTime)
             {
                 GameObject newPipe = Instantiate(pipe);
+                pipes.Add(newPipe);
                 newPipe.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), 0);
                 Destroy(newPipe, 15);
                 _timer = 0;
