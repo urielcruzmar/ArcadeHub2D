@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FlappyBird;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class GameManagerFlappyBird : MonoBehaviour
@@ -82,6 +83,11 @@ public class GameManagerFlappyBird : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backspace) && isGameEnded)
         {
             BeginGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

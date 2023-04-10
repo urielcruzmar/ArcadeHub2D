@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerPong : MonoBehaviour
 {
@@ -60,6 +61,10 @@ public class GameManagerPong : MonoBehaviour
         {
             gameStarted = true;
             ball.Launch();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
