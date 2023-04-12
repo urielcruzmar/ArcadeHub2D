@@ -1,84 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
-using FlappyBird;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
-public class GameManagerBreakout : MonoBehaviour
+namespace Breakout
 {
-    private int _score = 0;
-    public bool isGameEnded = false;
-    public bool isGamePaused = true;
-    public GameObject gameOverScreen;
-    public GameObject pauseGameScreen;
-    public TMP_Text finalScoreTxt;
-
-    private static GameManagerBreakout _instance;
-    public static GameManagerBreakout Instance
+    public class GameManagerBreakout : MonoBehaviour
     {
-        get
+        private int _health = 3;
+        [SerializeField] private TMP_Text healthText;
+        [SerializeField] private GameObject loseScreen;
+        [SerializeField] private Transform playerTransform;
+        [SerializeField] private Transform ballTransform;
+        [SerializeField] private BreakoutBall ball;
+    
+        private static GameManagerBreakout _instance;
+        public static GameManagerBreakout Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = FindObjectOfType<GameManagerBreakout>();
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<GameManagerBreakout>();
+                }
+
+                return _instance;
+            }
+        }
+
+        private void BeginGame()
+        {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            _health = 3;
+        }
+
+        public void LoseLife()
+        {
+            if (_health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                _health--;
+            }
+        }
+
+        private void Die()
+        {
+            Time.timeScale = 0;
+            loseScreen.SetActive(true);
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            Time.timeScale = 0;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                BeginGame();
             }
 
-            return _instance;
-        }
-    }
-
-    public void BeginGame()
-    {
-        isGameEnded = false;
-        gameOverScreen.SetActive(isGameEnded);
-        Time.timeScale = isGameEnded ? 0 : 1;
-        _score = 0;
-    }
-
-    public void TogglePauseGame()
-    {
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-        isGamePaused = Time.timeScale == 0;
-        pauseGameScreen.SetActive(isGamePaused);
-    }
-
-    public void Score()
-    {
-        _score++;
-    }
-
-    public void Die()
-    {
-        isGameEnded = true;
-        Time.timeScale = isGameEnded ? 0 : 1;
-        finalScoreTxt.SetText(_score.ToString());
-        gameOverScreen.SetActive(true);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Time.timeScale = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !isGameEnded)
-        {
-            TogglePauseGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Backspace) && isGameEnded)
-        {
-            BeginGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("MainMenu");
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name == "Breakout" ? "MainMenu" : "Breakout");
+            }
         }
     }
 }
