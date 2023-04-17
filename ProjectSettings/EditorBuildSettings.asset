@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FlappyBird/FlappyBird.unity
     guid: f30c8572b26f3b44aad9a09be25fe03a
+  - enabled: 1
+    path: Assets/Breakout/Breakout.unity
+    guid: 1e4010b400fc1dd4aaa438690c65ebb5
+  - enabled: 1
+    path: Assets/Breakout/Levels/Breakout1.unity
+    guid: 07d4aebd990cca242aef6815e531054f
   m_configObjects: {}
