@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Breakout
+namespace Breakout.Scripts
 {
     public class BreakoutMenu : MonoBehaviour
     {

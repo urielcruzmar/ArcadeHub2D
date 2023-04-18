@@ -1,9 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Breakout
+namespace Breakout.Scripts
 {
     public class GameManagerBreakout : MonoBehaviour
     {
@@ -32,6 +31,8 @@ namespace Breakout
         {
             Time.timeScale = Time.timeScale == 0 ? 1 : 0;
             _health = 3;
+            healthText.SetText(_health.ToString());
+            ball.Launch();
         }
 
         public void LoseLife()
@@ -43,6 +44,7 @@ namespace Breakout
             else
             {
                 _health--;
+                healthText.SetText(_health.ToString());
             }
         }
 
@@ -68,7 +70,7 @@ namespace Breakout
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name == "Breakout" ? "MainMenu" : "Breakout");
+                SceneManager.LoadScene("Breakout");
             }
         }
     }

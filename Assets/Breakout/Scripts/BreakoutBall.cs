@@ -2,7 +2,7 @@ using Pong;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Breakout
+namespace Breakout.Scripts
 {
     public class BreakoutBall : MonoBehaviour
     {
@@ -13,7 +13,8 @@ namespace Breakout
         [SerializeField] public AudioSource source;
         [SerializeField] public AudioClip paddleHitSound;
         [SerializeField] public AudioClip wallHitSound;
-        [SerializeField] public AudioClip scoreSound;
+        [SerializeField] public AudioClip brickSound;
+        [SerializeField] public AudioClip loseSound;
 
         // Start is called before the first frame update
         void Start()
@@ -40,6 +41,11 @@ namespace Breakout
             {
                 source.PlayOneShot(wallHitSound);
             }
+
+            if (col.gameObject.CompareTag("Brick"))
+            {
+                source.PlayOneShot(brickSound);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -47,16 +53,8 @@ namespace Breakout
             if (col.gameObject.CompareTag("Goal1"))
             {
                 _ballRb.velocity = new Vector2(0, 0);
-                source.PlayOneShot(scoreSound);
+                source.PlayOneShot(loseSound);
                 GameManagerPong.Instance.Paddle2Scored();
-                GameManagerPong.Instance.Restart();
-            }
-
-            if (col.gameObject.CompareTag("Goal2"))
-            {
-                _ballRb.velocity = new Vector2(0, 0);
-                source.PlayOneShot(scoreSound);
-                GameManagerPong.Instance.Paddle1Scored();
                 GameManagerPong.Instance.Restart();
             }
         }
