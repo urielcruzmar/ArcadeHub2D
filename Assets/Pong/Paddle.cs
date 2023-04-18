@@ -6,7 +6,7 @@ namespace Pong
     {
         [SerializeField] private float speed = 7f;
         [SerializeField] private bool isPaddle1;
-        private float _yBound = 3.75f;
+        private const float YBound = 3.75f;
 
         // Update is called once per frame
         void Update()
@@ -17,7 +17,7 @@ namespace Pong
         
             // Limit paddle vertical movement
             Vector2 paddlePosition = transform.position;
-            paddlePosition.y = Mathf.Clamp(paddlePosition.y + movement * speed * Time.deltaTime, -_yBound, _yBound);
+            paddlePosition.y = Mathf.Clamp(paddlePosition.y + movement * speed * Time.deltaTime, -YBound, YBound);
             transform.position = paddlePosition;
         }
     }
