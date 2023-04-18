@@ -6,14 +6,16 @@ namespace Breakout.Scripts
 {
     public class BreakoutBrick : MonoBehaviour
     {
-        [SerializeField] private int hits = 3;
+        [SerializeField] public int hits = 3;
         [SerializeField] private Sprite[] sprites;
-        private SpriteRenderer _renderer;
+        [SerializeField] public bool unbreakable;
+        [SerializeField] private SpriteRenderer renderer;
 
         // Start is called before the first frame update
         void Start()
         {
-            _renderer.sprite = sprites[hits];
+            renderer = GetComponent<SpriteRenderer>();
+            renderer.sprite = sprites[hits];
         }
 
         // Update is called once per frame
@@ -21,28 +23,29 @@ namespace Breakout.Scripts
         {
         
         }
-        
-        // Get hits
-        public int GetRemainingHits()
-        {
-            return hits;
-        }
 
         // Return true if destroyed
         private bool OnHit()
         {
-            hits--;
-            bool isAlive = hits > 0;
-            if (isAlive)
+            if (!unbreakable)
             {
-                _renderer.sprite = sprites[hits];
+                hits--;
+                bool isAlive = hits >= 0;
+                if (isAlive)
+                {
+                    renderer.sprite = sprites[hits];
+                }
+                return isAlive;
             }
-            return isAlive;
+            return true;
         }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            OnHit();
+            if (!OnHit())
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
