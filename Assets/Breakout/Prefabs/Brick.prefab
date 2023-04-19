@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8751913669397974400}
   m_Layer: 0
   m_Name: Brick
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,5 +124,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d510891c5a1b744abe1e7c4183119af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hits: 3
-  sprites: []
+  hits: 0
+  sprites:
+  - {fileID: 324287002, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -900412921, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -1144631190, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -1984296579, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 612911120, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 1319745116, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -307485054, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 959751915, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 1933319708, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -1401387606, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 1437750017, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -1405739532, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 2135601768, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 484090733, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -303708446, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -1893039579, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: -1758801940, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 1027667301, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 1146046491, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  - {fileID: 618961573, guid: 318dd3c01f9830349912fa66bd78af6d, type: 3}
+  unbreakable: 0
+  renderer: {fileID: 0}

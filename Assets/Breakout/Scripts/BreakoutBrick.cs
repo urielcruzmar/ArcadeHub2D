@@ -6,16 +6,21 @@ namespace Breakout.Scripts
 {
     public class BreakoutBrick : MonoBehaviour
     {
-        [SerializeField] public int hits = 3;
+        [SerializeField] public int hits;
         [SerializeField] private Sprite[] sprites;
         [SerializeField] public bool unbreakable;
+        [SerializeField] public bool special;
         [SerializeField] private SpriteRenderer renderer;
+        [SerializeField] private GameManagerBreakout managerBreakout;
 
         // Start is called before the first frame update
         void Start()
         {
             renderer = GetComponent<SpriteRenderer>();
-            renderer.sprite = sprites[hits];
+            if (!unbreakable && !special)
+            {
+                renderer.sprite = sprites[hits];
+            }
         }
 
         // Update is called once per frame
@@ -27,6 +32,12 @@ namespace Breakout.Scripts
         // Return true if destroyed
         private bool OnHit()
         {
+            if (special)
+            {
+                managerBreakout.PowerUp();
+                return false;
+            }
+            
             if (!unbreakable)
             {
                 hits--;
@@ -37,6 +48,7 @@ namespace Breakout.Scripts
                 }
                 return isAlive;
             }
+            
             return true;
         }
 
