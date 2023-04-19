@@ -105,7 +105,14 @@ namespace Breakout.Scripts
 
         public void PowerUp()
         {
-            
+            var localScale = playerTransform.localScale;
+            localScale = new Vector3((float)(localScale.x * 1.5), localScale.y, localScale.z);
+            playerTransform.localScale = localScale;
+        }
+
+        public void NextLevel()
+        {
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));
         }
 
         // Start is called before the first frame update
