@@ -4,13 +4,14 @@ using UnityEngine.Serialization;
 
 namespace Breakout.Scripts
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class BreakoutBrick : MonoBehaviour
     {
         [SerializeField] public int hits;
         [SerializeField] private Sprite[] sprites;
         [SerializeField] public bool unbreakable;
         [SerializeField] public bool special;
-        [SerializeField] private SpriteRenderer renderer;
+        [SerializeField] private new SpriteRenderer renderer;
         [SerializeField] private GameManagerBreakout managerBreakout;
 
         // Start is called before the first frame update

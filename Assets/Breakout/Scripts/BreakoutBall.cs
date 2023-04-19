@@ -8,7 +8,7 @@ namespace Breakout.Scripts
     {
         private Rigidbody2D _ballRb;
         [SerializeField] private float initialVelocity = 4f;
-        [SerializeField] private float velocityMultiplier = 1.1f;
+        //[SerializeField] private float velocityMultiplier = 1.1f;
         [SerializeField] private Transform player;
 
         [SerializeField] public AudioSource source;
@@ -16,7 +16,6 @@ namespace Breakout.Scripts
         [SerializeField] public AudioClip wallHitSound;
         [SerializeField] public AudioClip brickSound;
         [SerializeField] public AudioClip loseSound;
-        [SerializeField] public AudioClip victorySound;
 
         // Start is called before the first frame update
         void Start()
